@@ -1,0 +1,111 @@
+iansasciidoc-preview-frommarkdownpreviewnomd_WHAT_WORKS.txt
+
+### What WORKS 20240429
+for 856c3545fa454c01102b04299dc4d077a4387939
+
+## Commit message
+isAsciidoctor put in renderAsciidoctor inside lib/renderer.js/render. Now runs asoc or md depending on isAsiidoctor
+
+Bits removed for original version that only ran asoc but not MD not added back one by one to check that adoc works.
+saveAsHTML now workds for both MD & Adoc.  Adoc gets correct css file,. MD seems to get correct css but I think that I need to look at languate-ids/ & assets/ which were changed for adoc only version.
+copy to clipboard as HTML works for MD but will NOT WORK for Ad without a new funcion, I surmise.
+parent 2bb3be69ff7d6fda377b49decded3f51e1b71e19
+
+Much more works that did in the adoc only version described below. In that version eveything that did not seem to be needed was commented out. In this new version these have been reinstated, or if (isAsiidoctor) else to choose which code to run based on value isAsciidoctor which is at top of renderer.js exported & imported into ...view only at the moment.
+
+Work needs to be done on .css because these were removed and only what seemed to be needed for adoc was left or added. I dont think much was left. There was a lot relating to github-md which seems to be present in saveAsHTML.
+
+
+
+### What does NOT: adoc only version
+ local crossreferences #mytarget
+    but do not work in MdPreview
+    works in external browser
+ code highlighting  in the previewed asciidoc. Syntax highlighting OK in source editor.
+    code highlighting for code sections within .adoc files to be removed from MDP sections as provided by AD.js
+    IMPORTANT: When ctrl-shft-L is used to set grammar to Asciidoc (from language-asciidoc) then when ctrl-shft-P is pressed IansasciidocPreviewFrommarkdownpreviewnomd dissapears from the list. So the command ctrl-alt-shft-m no longer exists! source.asciidoc must be added to list: see below.
+        Works with grammar tx, html,gfm, Does not work with C, Ruby, Typescript. asciidoc, auto,
+    In IansasciidocPreviewFrommarkdownpreviewnomd setting under Grammar "source.asciidoc" must be added to default list "source.asciidoc, source.gfm, source.litcoffee, text.html.basic, text.md, text.plain, text.plain.null-grammar" then syntax highlighting takes place in  editor with ctrl-shft-L "asciidoc" enabled. Seems to have to be enabled for each extension with ctrl-shft-L, like asciidoc.txt.  However these are recognised "adoc, asc" ADD TO THIS LIST.  Language-asciidoc README.md says "The default file extensions for AsciiDoc files are ad, asc, adoc, asciidoc, and asciidoc.txt". All of these work except asciidoc.txt which seems to be treated as txt.
+
+What DOES WORK
+  Auto update ( if on in setup)
+  All attributes set in adoc header like "":toc: left"
+  All External Links to including mp4, youtube, png svg etc display.
+  keycode for preview toggle ctrl-alt-sift-m  at the moment
+  All asciidoctor.js formatting. Uses asciidoctor.css plus bits from markdown-preview to allow editor scrolling, zoom.
+      Callouts <1> <2> etc
+  Convert options & attributes on asciidoctor.convert(text, {...})
+  Save html file & copy to clipboard
+  ctrl-c  copies selected text in preview which appears in clipboard & can be pasted. Ctrl-a selects all text in preview.
+
+
+
+.adoc files not opened on ctrl-ald-shift-m when another asciidoc package is enabled,   but.adoct opens OK. Cantr remember which package   might be ascidoc-preview, or some part of language-adoc.
+
+
+TEST
+  adoc syntax highlight -try ascidoc-preview
+  see if syntax highlight from asciidoc-preview or language-asciidoc could be put in asciidoc-previewFromMDP.
+
+  With language-asciidoc enables asciidoc & "asciidoc hack for properties" appears in Edit>Select grammar,ctrl-shft-L list.
+    In Select grammar if autodetect or asciidoc is selected them ctrl-alt-shft-m does not open .adoc file. But changing the selection it works at once,
+
+  CHECK link operation of markdown-preview in atomV1.60
+
+  Setting IansasciidocPreviewFrommarkdownpreviewnomd to use
+
+####################  highlighting ptoblem in preview but OK in browser ###########
+Maybe clue here:https://stackoverflow.com/questions/63115206/highlight-js-doesnt-highlight-on-markup-load-from-javascript-event
+https://github.com/asciidoctor/asciidoctor/issues/1900   YES
+
+<code class="language-ruby hljs" data-lang="ruby">require 'sinatra'
+
+get '/hi' do
+  "Hello World"
+end</code>
+
+The following scriptis called by asciidoctor.js and will be executed OK in browser, but will not be allowed to execute inpulsar-edit. No scripts are allowed.
+line 499-504 in /media/AcerWinData/github_from_home/IansascidocPreviewFrommarkdownpreview/asciidoc_syntax_highlightingTEST.adoc.html
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+
+Rouge: the link above suggests that rouge should function OK. Hoever, the saved html opens in browser wi highlighting as it should be, but none appears in the pulsar preview.Not sure why yet.NB Rouge has be be installed as a gem called asciidoctor-rouge (or similar). There is no script as wi highlight.js so Rouge seems to be the one to explore.
+
+NBNB  I thinkthe above held for pulsar v115. After upgrade to v116 (20240416) I think that saveAsHTML does not show code highlighting. ??Does asciidoctor-rouge need to be reinstalled or something else.
+
+Pygments & Coderay - nothing in pulsar preview & also not in browser wi save as html. They both do not work at all.
+
+
+For github pulsar https://github.com/pulsar-edit/pulsar/issues/256  ###################################################  20240408
+@confused-Techie .
+## An update on asciidoc-preview.
+I have followed your suggestion and adapted markdown-preview to preview asciidoc source code.
+In brief, using asciidoctor.js as the renderer virtually everything functions  as expected but extensive changes were needed to the package.
+However, **I would like some advice as to how to proceed**. Basically I have copied the pulsar markdown-preview bundled package and extensively adapted it. This has involved changing much of the code removing chunks that are not relevant, adapting css & styling and making changes where the functionality is contained in asciidoctor.js. All references to markdown have been removed.
+Technically this is a fork but in reality it will end up being a rewrite greatly inspired by markdown-preview and support from yourself and others.
+
+My inclination is to set it up on github as a separate entity rather than a fork of markdown-preview but underlining my great debt to that package. **How would you suggest I proceed?** You have given me valuable advice for this project often before.
+
+Here is a summary of what works so far: magically almost everything. But I have to add that it has taken me a year to learn amongst many other things  js, cofeescript (a bit), git, the intricacies of pulsar (and the confusion caused by sunsetting of much of atom help). On the way I wrote my own preview package https://github.com/ianwillie/ianasciidocpreview-active-editor-info which was a learning exercise really and explored unsuccessfully  extending (atom-)asciidoc-preview which stopped working due to changes in electron versions.
+
+###  What DOES WORK so far  "iansasciidoc-preview-frommarkdownpreviewnomd" ( temporary name).
+
+ -  Basically almost everything that works in markdown-preview.
+ - All editor functions like zoom, resize, scroll. Clipboard copying from preview. Editor code highighting using language-asciidoc (settings are very important or preview does not function.)
+ - Auto update ( if turned on in setup) & preview on save (if turned off).
+ - Styling based on asciidoctor.css supplemented to show scrollbars and the like in the preview.
+ - All attributes set in adoc header like:
+   - Table of Contents (:toc: left),
+   - Author details,
+   - Callouts <1> <2>,
+   - Tables,
+   - Preview code highlighting (a bit iffy).
+ - All External Links to external media files display including mp4, youtube, png, svg, jpg.
+   - Internal links & targets are not functional as is the case in markdown-preview.
+ - Unique keycode for preview toggle.
+ - Convert options & attributes on asciidoctor.convert(text, {...}).
+ - Save html file & copy html to clipboard.

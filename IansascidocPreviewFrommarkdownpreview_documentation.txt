@@ -1,0 +1,12 @@
+IansascidocPreviewFrommarkdownpreview created from
+/media/AcerWinData/github_from_home/XXXOriginal_markdown-preview_copy20240228ToBecomeIansAscidocPreviewFromMarkdownPreview
+there is a backup copy as github_from_home/ORIGINAL_markdown-preview_copy20240228ToBecomeIansAscidocPreviewFromMarkdownPreview
+
+gitkraken commit before any name changes.
+
+After all name changes - shows markdown-preview of .md file with ctrl-alt-shift-M 20240322
+All name changes markdown-preview -> iansascidoc-preview-frommarkdownpreview
+    MarkdownPreview -> IansascidocPreviewFrommarkdownpreview
+link from ~/.pulsar/packages iansasciidoc-preview-frommarkdownpreviewnomd -> 
+        /media/AcerWinData/github_from_home/IansascidocPreviewFrommarkdownpreview
+          package.json "name": "iansasciidoc-preview-frommarkdownpreviewnomd",
