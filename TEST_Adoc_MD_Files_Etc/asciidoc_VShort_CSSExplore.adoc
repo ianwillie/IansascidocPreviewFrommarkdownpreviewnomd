@@ -1,7 +1,7 @@
 = AsciiDoc Syntax VShort
 :icons: font
 :stem:
-:toc: left
+:toc:
 :url-docs: https://asciidoctor.org/docs
 :url-gem: https://rubygems.org/gems/asciidoctor
 

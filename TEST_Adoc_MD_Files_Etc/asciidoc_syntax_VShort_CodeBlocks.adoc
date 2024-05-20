@@ -1,9 +1,16 @@
 = AsciiDoc Syntax VShort
+:safe: safe
 :icons: font
 :stem:
-:toc: left
-:url-docs: https://asciidoctor.org/docs
-:url-gem: https://rubygems.org/gems/asciidoctor
+:toc:
+:doctype: book
+//:url-docs: https://asciidoctor.org/docs
+//:url-gem: https://rubygems.org/gems/asciidoctor
+//:source-highlighter: highlight.js
+:source-highlighter: rouge
+:styledir: tempZ
+:stylesheet: asciidoctor.css
+
 
 == AsciiDoc Syntax VShort
 
@@ -23,6 +30,21 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ
 
 == Debug Running Pods [[debug_running_pods]]
 
+Code blocks follow:
+  BUT these do not make it into SaveAs HTML, OK in preview
+
+[source,ruby]
+----
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+----
+
+```language
+fenced code - a shorthand syntax for the source block
+```
 
 dddEEE +
 123456789112345678921234567893123456789412345678951234567896123456789712345678981234567899123456onload7890
