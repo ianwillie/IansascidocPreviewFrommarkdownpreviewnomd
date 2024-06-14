@@ -34,7 +34,7 @@
   "configSchema": {
     "isAsciidoctor": {
       "type": "boolean",
-      "default": false,
+      "default": true,
       "description": "Preview as Asciidoctor: true/false."
     },
     "breakOnSingleNewline": {},
