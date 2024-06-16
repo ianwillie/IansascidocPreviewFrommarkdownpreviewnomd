@@ -1,6 +1,8 @@
 'atom-text-editor':
   'ctrl-alt-shift-A': 'iansasciidoc-preview-frommarkdownpreviewnomd:toggle'
 
+  'ctrl-alt-shift-F': 'iansasciidoc-preview-frommarkdownpreviewnomd:openBrowserPopup'
+
 '.platform-darwin .iansasciidoc-preview-frommarkdownpreviewnomd':
   'cmd-a': 'iansasciidoc-preview-frommarkdownpreviewnomd:select-all'
   'cmd-+': 'iansasciidoc-preview-frommarkdownpreviewnomd:zoom-in'
