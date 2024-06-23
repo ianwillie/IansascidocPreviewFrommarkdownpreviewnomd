@@ -20,6 +20,7 @@
     "marked-gfm-heading-id": "^3.1.3",
     "marked-mangle": "^1.1.7",
     "node": "^18.20.2",
+    "nodedump": "^0.0.8",
     "npm": "^10.5.2",
     "rouge": "^1.0.3",
     "underscore-plus": "^1.0.0",
@@ -36,12 +37,6 @@
       "type": "boolean",
       "default": true,
       "description": "Preview as Asciidoctor: true/false."
-    },
-    "breakOnSingleNewline": {},
-    "liveUpdate": {
-      "type": "boolean",
-      "default": true,
-      "description": "Re-render the preview as the contents of the source changes, without requiring the source buffer to be saved. If disabled, the preview is re-rendered only when the buffer is saved to disk."
     },
     "openPreviewInSplitPane": {
       "type": "boolean",
@@ -60,17 +55,6 @@
       ],
       "description": "List of scopes for languages for which previewing is enabled. See [this README](https://github.com/pulsar-edit/spell-check#readme) for more information on finding the correct scope for a specific language."
     },
-    "useGitHubStyle": {},
-      "//title": "Use GitHub.com style",
-      "//type": "boolean",
-      "//default": false,
-      "//description": "Use the same CSS styles for preview as the ones used on GitHub.com.",
-    "//": "This is a comment",
-    "//": "This is a second comment",
-    "Comments": [
-        "First comment,",
-        "Second comment"
-    ],
     "syntaxHighlightingLanguageIdentifier": {
       "description": "Syntax Highlighting System to use for code block language identification. See [the README](https://github.com/pulsar-edit/pulsar/tree/master/packages/iansasciidoc-preview-frommarkdownpreviewnomd#readme) for details.",
       "type": "string",
@@ -94,8 +78,7 @@
         }
       ]
     },
-    "syntaxHighlightingLanguageIdentifier_REMOVED": {
-    },
+    "syntaxHighlightingLanguageIdentifier_REMOVED": {},
     "customSyntaxHighlightingLanguageIdentifiers": {
       "description": "Custom comma seperated list of Syntax Language Identifiers to map to any language. See [the README](https://github.com/pulsar-edit/pulsar/tree/master/packages/iansasciidoc-preview-frommarkdownpreviewnomd#readme) for usage.",
       "type": "string",

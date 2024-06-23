@@ -3,10 +3,9 @@ menu: [
   submenu: [
     label: 'IansasciidocPreviewFrommarkdownpreviewnomd'
     submenu: [
-      {label: 'Toggle Preview', command: 'iansasciidoc-preview-frommarkdownpreviewnomd:toggle'}
-      {label: 'Toggle Break on Single Newline', command: 'iansasciidoc-preview-frommarkdownpreviewnomd:toggle-break-on-single-newline'}
-      {label: 'Toggle GitHub Style', command: 'iansasciidoc-preview-frommarkdownpreviewnomd:toggle-github-style'},
-      {label: 'saveAsHTML', command: 'iansasciidoc-preview-frommarkdownpreviewnomd:save-as-html'}
+      {label: 'Toggle Preview', command: 'iansasciidoc-preview-frommarkdownpreviewnomd:toggle'},
+      {label: 'saveAsHTML', command: 'iansasciidoc-preview-frommarkdownpreviewnomd:save-as-html'},
+      {label: 'openBrowserPopup', command: 'iansasciidoc-preview-frommarkdownpreviewnom:open-browser-popup'}
     ]
   ]
 ]
@@ -15,6 +14,7 @@ menu: [
   '.iansasciidoc-preview-frommarkdownpreviewnomd': [
     {label: 'Select All', command: 'iansasciidoc-preview-frommarkdownpreviewnomd:select-all'}
     {label: 'Save As HTML\u2026', command: 'core:save-as'}
+    {label: 'Open Browser Popup', command: 'iansasciidoc-preview-frommarkdownpreviewnomd:open-browser-popup'}
   ]
   '.iansasciidoc-preview-frommarkdownpreviewnomd.has-selection': [
     {label: 'Copy', command: 'core:copy'}
@@ -37,4 +37,4 @@ menu: [
   '.tree-view .file .name[data-name$=\\.txt]':
     [{label: 'Markdown Preview', command: 'iansasciidoc-preview-frommarkdownpreviewnomd:preview-file'}]
   '.tree-view .file .name[data-name$=\\.adoc]':
-    [{label: 'Markdown Preview', command: 'iansasciidoc-preview-frommarkdownpreviewnomd:preview-file'}]
+    [{label: 'Asciidoctor Preview', command: 'iansasciidoc-preview-frommarkdownpreviewnomd:preview-file'}]

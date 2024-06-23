@@ -1,4 +1,4 @@
-= AsciiDoc Syntax VShort
+= AsciiDoc Syntax VShort Code Blocks
 :safe: safe
 :icons: font
 :stem:
@@ -7,6 +7,7 @@
 //:url-docs: https://asciidoctor.org/docs
 //:url-gem: https://rubygems.org/gems/asciidoctor
 //:source-highlighter: highlight.js
+
 :source-highlighter: rouge
 :styledir: tempZ
 :stylesheet: asciidoctor.css
