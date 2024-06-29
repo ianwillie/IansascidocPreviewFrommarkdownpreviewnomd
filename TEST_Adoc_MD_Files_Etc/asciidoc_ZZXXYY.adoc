@@ -1,0 +1,41 @@
+= AsciiDoc Syntax VShort
+:icons: font
+:stem:
+:toc:
+:url-docs: https://asciidoctor.org/docs
+:url-gem: https://rubygems.org/gems/asciidoctor
+
+
+== AsciiDoc Syntax VShort 123
+
+A brief reference of the most commonly used AsciiDoc syntax.
+You can find the full documentation for the AsciiDoc syntax at {url-docs}.
+
+== Paragraphs
+
+A normal paragraph.
+Line breaks are not preserved.
+
+See https://github.com/pulsar-edit/pulsar/issues/475#issuecomment-1500706206
+
+1234567890 abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+¬!"£$%^&*()_+-= {}[]:;@'~#<,>.?/|\
+
+dddeehhhh
+
+== Anchors
+
+[[idname,reference text]]
+// or written using normal block attributes as `[#idname,reftext=reference text]`
+A paragraph (or any block) with an anchor (aka ID) and reftext.
+
+See <<idname>> or <<idname,optional text of internal link>>.
+
+xref:document.adoc#idname[Jumps to anchor in another document].
+
+xref:asciidoc_syntax_Long.adoc[Jumps to anchor in another document asciidoc_syntax_Long.adoc].
+
+xref:xref:asciidoc_syntax_Long.adoc[A sibling document][asciidoc_syntax_Long.adoc]
+
+This paragraph has a footnote.footnote:[This is the text of the footnote. Scroll to doc end to see.]
