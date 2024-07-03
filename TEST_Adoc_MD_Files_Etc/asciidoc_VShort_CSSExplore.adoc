@@ -1,4 +1,4 @@
-= AsciiDoc Syntax VShort
+= AsciiDoc Syntax VShort CSSE
 :icons: font
 :stem:
 :toc:
