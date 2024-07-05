@@ -6,7 +6,7 @@
 :url-gem: https://rubygems.org/gems/asciidoctor
 
 
-== AsciiDoc Syntax VShort
+== AsciiDoc Syntax VShort CSSE
 
 A brief reference of the most commonly used AsciiDoc syntax.
 You can find the full documentation for the AsciiDoc syntax at {url-docs}.

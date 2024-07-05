@@ -1,4 +1,4 @@
-= AsciiDoc Syntax VShort
+= AsciiDoc Syntax VShort ZZXXYY
 :icons: font
 :stem:
 :toc:
@@ -6,7 +6,7 @@
 :url-gem: https://rubygems.org/gems/asciidoctor
 
 
-== AsciiDoc Syntax VShort 123
+== AsciiDoc Syntax VShort ZZXXYY
 
 A brief reference of the most commonly used AsciiDoc syntax.
 You can find the full documentation for the AsciiDoc syntax at {url-docs}.
