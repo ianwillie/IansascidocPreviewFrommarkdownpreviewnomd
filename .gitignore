@@ -3,3 +3,10 @@ npm-debug.log
 
 temp/
 *.html
+*.*ORIG
+*.*ORIGINAL
+lib/renderer.js202404291751
+lib/renderer.jsFromMain.js
+lib/ansasciidoc-preview-frommarkdownpreview-view.jsFromMain.js
+TEST_Adoc_MD_Files_Etc/
+IansasciidocPreviewFromMarkdownPreview_Settings_Screenshot_2024-03-24_18-16-05.png

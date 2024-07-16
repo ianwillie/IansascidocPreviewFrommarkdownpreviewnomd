@@ -1,3 +1,42 @@
+# IansasciidocPreviewFrommarkdownpreviewnomd
+altered version of Pulsar markdown-preview package that will recognise and preview asciidoctor .adoc files.
+
+To preview a file with cursor .adoc file press:
+  <kbd>ctrl-alt-shift-a</kbd>  
+(If the official pulsar mardown-preview package is enabled then <kbd>ctrl-shift-m</kbd> , will preview markdown files.)
+
+What WORKS:
+Asciidoctor files with .adoc or .ad (& perhaps other) extensions are previewed.
+Preview is synced to editor changes depending on setting-up.
+
+By placing the cursor in adoc file it can be previewed in falkon browser by pressing <kbd>ctrl-alt-shift-f</kbd>. Internal target links will be functional. These are not allowed in the pulsar preview. External links will be operational.  Other links to local files may or may not  operate dependant on your setup. NOTE: falkon must be installed locally see https://www.falkon.org/
+
+Can be saved as HTML by placing cursor in adoc preview and Right Click > Save as HTML. This file will open in a pane and can be previewed in pulsar with <kbd>ctrl-shift-h</kbd> where internal targets seem to function.
+
+### What does NOT WORK:
+
+Preview of <kbd> </kbd>
+
+Test in spec directory do not function because they are the originals from pulsar markdown-preview. When I know more about how to write these that will change.
+
+* NOTE: This package is based on the last pulsar markdown-preview package before treesitter syntax highlighting was introduced for all the files.
+
+## How IansasciidocPreviewFrommarkdownpreviewnomd functions:
+Most of the code comes directly from pulsar markdown-preview. The main change is that when an adoc file is previewed the render function in render.js calls node asciidoctor.convert.js in renderAsciidoctor() instead of the original render(). render() is called with ```const domFragment = render(text, filePath)``` in render.js by exports.toHTML() & exports.toDOMFragment().
+asciidoctor.convert is part of the node package asciidoctor.js. The big advantage in using this is that it is maintained by https://asciidoctor.org/ . It is a javascript translation of the Ruby asciidoctor.rb. This relieves pulsar of any maintenance.
+
+The vast majority of the front matter Convert Options work as expected which includes, for example, style-sheet management, sourcemap, and standalone or embedded document. See https://docs.asciidoctor.org/asciidoctorj/latest/asciidoctor-api-options/. However, some of them are a bit tricky to use and the render renderAsciidoctor() function includes these in the call ```textToHTML = Asciidoctor.convert(text,{ 'standalone': true, 'safe':'safe',
+'attributes': { 'linkcss': false , 'icons': 'font'}});``` to produce a working html file most of the time with an embedded style-sheet. Using asciidoctor.convert() means that none of these need to be handled by the pulsar package and their conversion coding is provided by the asciidoctor.org.
+
+(At the moment there is a check that the file extension is .adoc but that will be removed soon. This is a remnant from the other similar package (but not developed properly yet) which will preview both md & adoc, IansasciidocPreviewFrommarkdownpreviewnomd Note terminal "nomd" no markdown.)
+
+The new function in main.js ```openBrowserPopup()``` calls the browser falkon which will give an additional view of the links in the file. An alternative browser could be coded in. In the future this could be in the configSchema option.
+
+WARNING: I am pretty new to js & pulsar package coding, so you will probably have to find how to make the package work for you: it certainly works for me on a daily basis maintaining websites with 100s of external & internal links.  But it does show proof of possibility that pulsar markdown-preview can be easily altered to preview asciidoc files. The other similar package IansasciidocPreviewFrommarkdownpreview, without the terminal "nomd" attempts to preview both markdown and asciidoc documents. It works, but it needs more development.
+
+<hr><hr>
+
+### Original README.me for pulsar markdown-package - not really for use in this package
 # Markdown Preview package
 
 Show the rendered HTML markdown to the right of the current editor using <kbd>ctrl-shift-m</kbd>.
