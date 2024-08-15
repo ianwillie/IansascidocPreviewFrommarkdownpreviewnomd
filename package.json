@@ -2,7 +2,7 @@
   "name": "iansasciidoc-preview-frommarkdownpreviewnomd",
   "version": "0.160.2",
   "main": "./lib/main",
-  "description": "Open a rendered version of the Asciidoc in the current editor with `ctrl-shift-m`.",
+  "description": "Open a rendered version of the Asciidoc in the current editor wi 'ctrl-alt-shift-A', falcon external browser  wi  'ctrl-alt-shift-F'.",
   "repository": "",
   "license": "MIT",
   "engines": {

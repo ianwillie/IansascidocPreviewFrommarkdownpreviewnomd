@@ -1,12 +1,27 @@
 # IansasciidocPreviewFrommarkdownpreviewnomd
 altered version of Pulsar markdown-preview package that will recognise and preview asciidoctor .adoc files.
 
+## Requisites:
+Package  language-asciidoc must be installed and enabled. This shows the source code highlighted for asciidoc and it will allow the file type source.asciidoc to be selected.
+
+The file type of the source file must be set to source.adoc either by looking at bottom right of window next to the encoding (likely UTF-8) and selecting source.asciidoc if it is not showing.
+This file type can be set automatically by setting it as the default for .adoc files in pulsar config.cson file. (Open Settings pane and on left at bottom select config.cson). The entry at the top of the core section should contains something like this: (Other asciidoc extensions can be added.)
+```
+  core:
+      customFileTypes:
+        "text.plain": [
+          "adoc"
+          "asciidoc"
+        ]
+```
+
+# To preview file        
 To preview a file with cursor .adoc file press:
   <kbd>ctrl-alt-shift-a</kbd>  
 (If the official pulsar mardown-preview package is enabled then <kbd>ctrl-shift-m</kbd> , will preview markdown files.)
 
 What WORKS:
-Asciidoctor files with .adoc or .ad (& perhaps other) extensions are previewed.
+Asciidoctor files with .adoc or .asciidoc (& perhaps others if added) extensions are previewed.
 Preview is synced to editor changes depending on setting-up.
 
 By placing the cursor in adoc file it can be previewed in falkon browser by pressing <kbd>ctrl-alt-shift-f</kbd>. Internal target links will be functional. These are not allowed in the pulsar preview. External links will be operational.  Other links to local files may or may not  operate dependant on your setup. NOTE: falkon must be installed locally see https://www.falkon.org/
@@ -19,7 +34,7 @@ Preview of <kbd> </kbd>
 
 Test in spec directory do not function because they are the originals from pulsar markdown-preview. When I know more about how to write these that will change.
 
-* NOTE: This package is based on the last pulsar markdown-preview package before treesitter syntax highlighting was introduced for all the files.
+* NOTE: This package is based on the last pulsar v1.118.0  markdown-preview package before treesitter syntax highlighting was introduced for all the files in pulsar v1.119.0. 
 
 ## How IansasciidocPreviewFrommarkdownpreviewnomd functions:
 Most of the code comes directly from pulsar markdown-preview. The main change is that when an adoc file is previewed the render function in render.js calls node asciidoctor.convert.js in renderAsciidoctor() instead of the original render(). render() is called with ```const domFragment = render(text, filePath)``` in render.js by exports.toHTML() & exports.toDOMFragment().
